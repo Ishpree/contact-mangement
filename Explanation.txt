@@ -1,0 +1,54 @@
+Implementation of each function:
+
+1. Contact class:
+   - The Contact class represents an individual contact with attributes such as name, phone_number, 
+     email, and address.
+   - The constructor method __init__(self, name, phone_number, email, address) initializes the contact attributes based on the provided
+     arguments.
+
+2. ContactManager class:
+   - The ContactManager class manages the list of contacts and provides methods to interact with them.
+   - __init__(self, filename="contacts.txt"):
+     - The constructor method initializes the contact list as an empty list and sets the filename(contacts.txt).
+
+   - add_contact(self, contact):
+     - The add_contact method takes a Contact object as an argument and appends it to the list of contacts.
+
+   - view_contacts(self):
+     - The view_contacts method displays all the contacts in a formatted manner.
+     - If there are no contacts, it prints "No contacts found."
+     - Otherwise, it iterates over the contacts using a for loop and the enumerate function to display each contact's details.
+
+   - search_contact(self, query):
+     - The search_contact method takes a query as an argument, which can be a name or phone number to search for contacts.
+     - It initializes an empty list called found_contacts.
+     - The method iterates over the contacts using a for loop. If the query (lowercased) is present in the contact's name (lowercased) 
+       or phone number, it adds the contact to the found_contacts list.
+     - It returns the list of contacts that match the search query.
+
+   - delete_contact(self, name):
+     - The delete_contact method takes a name (string) as an argument and removes the contact from the list with the same 
+       name (case-insensitive comparison).
+
+   - save_contacts_to_file(self):
+     - The save_contacts_to_file method saves the contact list to contacts.txt.
+     - It opens the file in write mode and writes each contact's details to a new line 
+       in the file.
+
+   - load_contacts_from_file(self):
+     - The load_contacts_from_file method loads contacts from the file (contacts.txt) and populates the list of contacts.
+     - It checks if the file exists using os.path.exists(self.filename).
+     - If the file exists, it opens the file in read mode, iterates over each line, and splits the line using commas to extract 
+       the contact's details.
+     - It creates a new Contact object with the extracted details and adds it to the contact list using the add_contact method.
+
+3. main() function:
+   - The main() function serves as the entry point of the program and provides the user interface for the contact management system.
+   - It creates a ContactManager instance and loads the contacts from the file at the beginning.
+   - Depending on the user's choice, it calls the corresponding methods of the ContactManager class to perform the desired 
+     actions like adding, viewing, searching, or deleting contacts.
+
+     Challenge
+     The challenge here was to store contacts persistently, so I have used serialization 
+     and deserialization to save and load the contacts.
+
